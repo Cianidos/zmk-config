@@ -5,7 +5,9 @@
  */
 
 #include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
 
 / {
     keymap {
@@ -20,11 +22,11 @@
             //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
 
             bindings = <
-&kp TAB           &kp Q   &kp W   &kp E     &kp R     &kp T                              &kp Y          &kp U      &kp I      &kp O    &kp P          &kp GRAVE
-&kp LEFT_CONTROL  &kp A   &kp S   &kp D     &kp F     &kp G                              &kp H          &kp J      &kp K      &kp L    &kp SEMICOLON  &kp SQT
-&kp LEFT_SHIFT    &kp Z   &kp X   &kp C     &kp V     &kp B                              &kp N          &kp M      &kp COMMA  &kp DOT  &kp SLASH      &kp BACKSLASH
-&trans            &trans  &trans  &trans    &trans    &kp SPACE  &kp LBKT      &kp RBKT  &kp BACKSPACE  &trans     &trans     &trans   &trans         &trans
-                                  &kp LALT  &kp LGUI  &mo 1      &kp ESCAPE    &kp RET   &mo 2          &kp GLOBE  &kp RGUI
+&kp TAB           &kp Q   &kp W   &kp E     &kp R     &kp T                                &kp Y            &kp U      &kp I      &kp O    &kp P          &kp GRAVE
+&kp LEFT_CONTROL  &kp A   &kp S   &kp D     &kp F     &kp G                                &kp H            &kp J      &kp K      &kp L    &kp SEMICOLON  &kp SQT
+&kp LEFT_SHIFT    &kp Z   &kp X   &kp C     &kp V     &kp B                                &kp N            &kp M      &kp COMMA  &kp DOT  &kp SLASH      &kp BACKSLASH
+&trans            &trans  &trans  &trans    &trans    &trans        &kp LBKT     &kp RBKT  &trans           &trans     &trans     &trans   &trans         &trans
+                                  &kp LALT  &kp LGUI  &lt 1 ESCAPE  &kp SPACE    &kp RET   &lt 2 BACKSPACE  &kp GLOBE  &kp RGUI
             >;
         };
 
@@ -40,11 +42,11 @@
 
         layer_2 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans          &trans          &trans        &trans     &trans     &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT  &kp EQUAL  &kp MINUS
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans          &trans          &trans        &trans     &trans     &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans          &trans          &trans        &trans     &trans     &trans
-                        &trans  &trans  &trans  &trans    &trans  &trans          &trans          &trans
+&trans      &trans        &trans        &trans        &trans  &trans                          &trans          &trans          &trans        &trans     &trans     &trans
+&trans      &trans        &trans        &trans        &trans  &trans                          &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT  &kp EQUAL  &kp MINUS
+&trans      &trans        &trans        &trans        &trans  &trans                          &trans          &trans          &trans        &trans     &trans     &trans
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &trans  &out OUT_TOG  &trans    &trans  &trans          &trans          &trans        &trans     &trans     &trans
+                                        &trans        &trans  &trans        &trans    &trans  &trans          &trans          &trans
             >;
         };
     };
