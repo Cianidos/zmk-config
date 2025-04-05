@@ -54,11 +54,11 @@
             //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
 
             bindings = <
-&trans                         &trans                         &trans                             &trans                           &trans      &trans                           &studio_unlock  &out OUT_TOG  &bt BT_SEL 0                       &bt BT_SEL 1                         &bt BT_SEL 2                     &bt BT_SEL 3
-&kp Q                          &kp W                          &kp F                              &kp P                            &kp G       &trans                           &trans          &kp J         &kp L                              &kp U                                &kp Y                            &kp SEMI
-&home_raw_mod_left LEFT_GUI A  &home_raw_mod_left LEFT_ALT R  &home_raw_mod_left LEFT_CONTROL S  &home_raw_mod_left LEFT_SHIFT T  &kp D       &trans                           &trans          &kp H         &home_row_mod_right RIGHT_SHIFT N  &home_row_mod_right RIGHT_CONTROL E  &home_row_mod_right RIGHT_ALT I  &home_row_mod_right RIGHT_GUI O
-&kp Z                          &kp X                          &kp C                              &kp V                            &kp B       &trans     &trans     &trans     &trans          &kp K         &kp M                              &kp COMMA                            &kp DOT                          &kp FSLH
-                                                                                                 &trans                           &kp ESCAPE  &kp SPACE  &kp TAB    &kp ENTER  &kp BACKSPACE   &mo 1         &trans
+&trans                         &trans                         &trans                             &trans                           &trans      &trans                     &studio_unlock  &out OUT_TOG  &bt BT_SEL 0                       &bt BT_SEL 1                         &bt BT_SEL 2                     &bt BT_SEL 3
+&kp Q                          &kp W                          &kp F                              &kp P                            &kp G       &trans                     &trans          &kp J         &kp L                              &kp U                                &kp Y                            &kp SEMI
+&home_raw_mod_left LEFT_GUI A  &home_raw_mod_left LEFT_ALT R  &home_raw_mod_left LEFT_CONTROL S  &home_raw_mod_left LEFT_SHIFT T  &kp D       &trans                     &trans          &kp H         &home_row_mod_right RIGHT_SHIFT N  &home_row_mod_right RIGHT_CONTROL E  &home_row_mod_right RIGHT_ALT I  &home_row_mod_right RIGHT_GUI O
+&kp Z                          &kp X                          &kp C                              &kp V                            &kp B       &trans  &trans    &trans   &trans          &kp K         &kp M                              &kp COMMA                            &kp DOT                          &kp FSLH
+                                                                                                 &trans                           &kp ESCAPE  &trans  &mo 1     &kp TAB  &kp SPACE       &kp ENTER     &kp BACKSPACE
             >;
         };
 
