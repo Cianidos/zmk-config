@@ -20,12 +20,8 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <270>;
-            quick-tap-ms = <300>;
-            require-prior-idle-ms = <230>;
-            flavor = "tap-unless-interrupted";
-            hold-trigger-on-release;
-            hold-trigger-key-positions = <35 34 33 32>;
+            tapping-term-ms = <200>;
+            flavor = "hold-preferred";
         };
 
         hrmr: hrmr {
@@ -34,12 +30,8 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <270>;
-            quick-tap-ms = <300>;
-            require-prior-idle-ms = <230>;
-            flavor = "tap-unless-interrupted";
-            hold-trigger-on-release;
-            hold-trigger-key-positions = <24 25 26 27>;
+            tapping-term-ms = <200>;
+            flavor = "hold-preferred";
         };
     };
 
