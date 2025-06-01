@@ -14,9 +14,9 @@
     combos { compatible = "zmk,combos"; };
 
     behaviors {
-        home_row_mod_left: home_row_mod_left {
+        hrml: hrml {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOME_ROW_MOD_LEFT";
+            label = "HRML";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
@@ -28,9 +28,9 @@
             hold-trigger-key-positions = <35 34 33 32>;
         };
 
-        home_row_mod_right: home_row_mod_right {
+        hrmr: hrmr {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOME_ROW_MOD_RIGHT";
+            label = "HRMR";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
@@ -55,11 +55,11 @@
             //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
 
             bindings = <
-&trans  &trans                         &trans                         &trans                             &trans                           &trans                         &trans         &trans                            &trans                              &trans                          &trans                          &trans
-&trans  &kp Q                          &kp W                          &kp F                              &kp P                            &kp B                          &kp J          &kp L                             &kp U                               &kp Y                           &kp SQT                         &trans
-&trans  &home_row_mod_left LEFT_GUI A  &home_row_mod_left LEFT_ALT R  &home_row_mod_left LEFT_CONTROL S  &home_row_mod_left LEFT_SHIFT T  &kp G                          &kp M          &home_row_mod_right LEFT_SHIFT N  &home_row_mod_right LEFT_CONTROL E  &home_row_mod_right LEFT_ALT I  &home_row_mod_right LEFT_GUI O  &trans
-&trans  &kp Z                          &kp X                          &kp C                              &kp D                            &kp V      &to 4      &trans   &kp K          &kp H                             &kp COMMA                           &kp DOT                         &kp FSLH                        &trans
-                                                                      &mo 3                              &lt 2 ESCAPE                     &kp SPACE  &kp TAB    &kp RET  &kp BACKSPACE  &lt 1 DELETE                      &trans
+&trans  &trans            &trans            &trans                &trans              &trans                         &trans         &trans              &trans                &trans            &trans            &trans
+&trans  &kp Q             &kp W             &kp F                 &kp P               &kp B                          &kp J          &kp L               &kp U                 &kp Y             &kp SQT           &trans
+&trans  &hrml LEFT_GUI A  &hrml LEFT_ALT R  &hrml LEFT_CONTROL S  &hrml LEFT_SHIFT T  &kp G                          &kp M          &hrmr LEFT_SHIFT N  &hrmr LEFT_CONTROL E  &hrmr LEFT_ALT I  &hrmr LEFT_GUI O  &trans
+&trans  &kp Z             &kp X             &kp C                 &kp D               &kp V      &to 4      &trans   &kp K          &kp H               &kp COMMA             &kp DOT           &kp FSLH          &trans
+                                            &mo 3                 &lt 2 ESCAPE        &kp SPACE  &kp TAB    &kp RET  &kp BACKSPACE  &lt 1 DELETE        &trans
             >;
 
             label = "base";
