@@ -24,7 +24,7 @@
             tapping-term-ms = <280>;               // Increased from 200ms
             quick-tap-ms = <175>;                  // Added - allows quick repeat taps
             require-prior-idle-ms = <110>;         // Added - prevents rolling key issues
-            hold-trigger-key-positions = <6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 43 44 45 46 47 54 55 56 57 48 49>;
+            hold-trigger-key-positions = <6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 43 44 45 46 47 54 55 56 57 48 49 52 53>;
             hold-trigger-on-release;               // Added - allows modifier combinations
         };
 
@@ -38,7 +38,7 @@
             tapping-term-ms = <280>;               // Increased from 200ms
             quick-tap-ms = <175>;                  // Added - allows quick repeat taps
             require-prior-idle-ms = <110>;         // Added - prevents rolling key issues
-            hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38 39 40 41 50 51 52 53 42>;
+            hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38 39 40 41 50 51 52 53 42 54 55>;
             hold-trigger-on-release;               // Added - allows modifier combinations
         };
     };
