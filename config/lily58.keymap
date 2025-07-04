@@ -39,13 +39,6 @@
         compatible = "zmk,keymap";
 
         base {
-            // ------------------------------------------------------------------------------------------------------------
-            // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   `   |
-            // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   |   -   |
-            // |  CTRL |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   '   |
-            // | SHIFT |  Z  |  X  |  C   |  V   |  B   |   "["  |  |  "]"  |  N   |  M    |  ,    |  .   |   /   | SHIFT |
-            //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  | GUI   |
-
             bindings = <
 &trans  &trans            &trans            &trans                &trans              &trans                             &trans           &trans              &trans                &trans            &trans            &trans
 &trans  &kp Q             &kp W             &kp F                 &kp P               &kp B                              &kp J            &kp L               &kp U                 &kp Y             &kp SQT           &trans
@@ -54,16 +47,16 @@
                                             &trans                &kp ESCAPE          &lt 2 SPACE  &lt 3 TAB    &kp RET  &lt 1 BACKSPACE  &kp DELETE          &trans
             >;
 
-            label = "base";
+            label = "Base";
         };
 
         nums {
             bindings = <
-&trans  &trans     &trans  &trans  &trans   &trans                          &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp LBKT   &kp N7  &kp N8  &kp N9   &kp RBKT                        &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp SEMI   &kp N4  &kp N5  &kp N6   &kp EQUAL                       &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &kp GRAVE  &kp N1  &kp N2  &kp N3   &kp BSLH   &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                           &trans  &kp DOT  &kp N0     &kp MINUS    &trans  &trans  &trans  &trans
+&studio_unlock  &trans     &trans  &trans  &trans   &trans                          &trans  &trans  &trans  &trans  &trans  &trans
+&trans          &kp LBKT   &kp N7  &kp N8  &kp N9   &kp RBKT                        &trans  &trans  &trans  &trans  &trans  &trans
+&trans          &kp SEMI   &kp N4  &kp N5  &kp N6   &kp EQUAL                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans          &kp GRAVE  &kp N1  &kp N2  &kp N3   &kp BSLH   &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                                   &trans  &kp DOT  &kp N0     &kp MINUS    &trans  &trans  &trans  &trans
             >;
 
             label = "Nums";
@@ -71,10 +64,10 @@
 
         arrows {
             bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans                       &out OUT_TOG   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR
 &trans  &trans  &trans  &trans  &trans  &trans                       &trans         &trans        &trans        &trans        &trans        &trans
-&trans  &trans  &trans  &trans  &trans  &trans                       &trans         &trans        &trans        &trans        &trans        &trans
-&trans  &trans  &trans  &trans  &trans  &trans                       &caps_word     &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     &bt BT_CLR
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans     &out OUT_TOG   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+&trans  &trans  &trans  &trans  &trans  &trans                       &caps_word     &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     &kp K_APP
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans     &trans         &kp HOME      &kp PG_DN     &kp PG_UP     &kp END       &trans
                         &trans  &trans  &trans  &trans    &kp ENTER  &kp BACKSPACE  &kp DELETE    &trans
             >;
 
@@ -83,11 +76,11 @@
 
         mouse {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                      &trans    &trans          &trans          &trans        &trans           &trans
-&trans  &trans  &trans  &trans  &trans  &trans                      &trans    &trans          &trans          &trans        &trans           &trans
-&trans  &trans  &trans  &trans  &trans  &trans                      &trans    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &trans
-                        &trans  &trans  &trans  &trans    &mkp MB2  &mkp MB1  &mkp MB3        &trans
+&trans  &trans  &trans  &trans  &trans  &trans                      &kp C_MUTE   &kp C_VOL_DN    &C_VOL_UP       &kp C_PREV    &kp C_PP         &kp C_NEXT
+&trans  &trans  &trans  &trans  &trans  &trans                      &kp C_BRI_UP &trans          &trans          &trans        &trans           &trans
+&trans  &trans  &trans  &trans  &trans  &trans                      &kp C_BRI_DN &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans       &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &trans
+                        &trans  &trans  &trans  &trans    &mkp MB2  &mkp MB1     &mkp MB3        &trans
             >;
 
             label = "Mouse";
