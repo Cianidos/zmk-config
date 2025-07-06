@@ -11,6 +11,29 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <input/processors.dtsi>
 
+
+    // Base mouse movement - accelerated, slightly faster than default
+    &mmv {
+        time-to-max-speed-ms = <400>;        // Smooth acceleration
+        acceleration-exponent = <2>;         // Nice acceleration curve
+    };
+
+    // Set up input processors for different modifier speeds
+    &mmv_input_listener {
+        mouse_slow {
+            layers = <4>;
+            input-processors = <&zip_xy_scaler 1 4>;  // 4x slower = precise
+        };
+        mouse_medium {
+            layers = <5>;
+            input-processors = <&zip_xy_scaler 1 2>;  // 2x slower = medium
+        };
+        mouse_fast {
+            layers = <6>;
+            input-processors = <&zip_xy_scaler 3 2>;  // 1.5x faster
+        };
+    };
+
 / {
     combos { compatible = "zmk,combos"; };
 
@@ -77,37 +100,6 @@
         };
     };
 
-    // Base mouse movement - accelerated, slightly faster than default
-
-    &mmv {
-        time-to-max-speed-ms = <400>;        // Smooth acceleration
-        acceleration-exponent = <2>;         // Nice acceleration curve
-    };
-
-    // Set up input processors for different modifier speeds
-
-    &mmv_input_listener {
-        // GUI modifier = slow, linear, accurate movement
-
-        mouse_slow {
-            layers = <4>;
-            input-processors = <&zip_xy_scaler 1 4>;  // 4x slower = precise
-        };
-
-        // ALT modifier = medium-slow speed
-
-        mouse_medium {
-            layers = <5>;
-            input-processors = <&zip_xy_scaler 1 2>;  // 2x slower = medium
-        };
-
-        // CTRL modifier = fast movement
-
-        mouse_fast {
-            layers = <6>;
-            input-processors = <&zip_xy_scaler 3 2>;  // 1.5x faster
-        };
-    };
 
     keymap {
         compatible = "zmk,keymap";
