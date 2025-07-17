@@ -122,9 +122,10 @@
             // hold-trigger-on-release; // REMOVED
         };
 
+        // custom layer tap left
         cltl: cltl {
             compatible = "zmk,behavior-hold-tap";
-            label = "HRML";
+            label = "CLTL";
             bindings = <&mo>, <&kp>;
             #binding-cells = <2>;
             flavor = "balanced";
@@ -136,9 +137,10 @@
             // hold-trigger-on-release;
         };
 
+        // custom layer tap right
         cltr: cltr {
             compatible = "zmk,behavior-hold-tap";
-            label = "HRMR";
+            label = "CLTR";
             bindings = <&mo>, <&kp>;
             #binding-cells = <2>;
             flavor = "balanced";
@@ -193,11 +195,11 @@
 
         mouse {
             bindings = <
-&trans  &trans          &trans          &trans              &trans          &trans                      &kp C_MUTE    &kp C_VOL_DN    &kp C_VOL_UP    &kp C_PREV    &kp C_PP         &kp C_NEXT
-&trans  &trans          &trans          &trans              &trans          &trans                      &kp C_BRI_UP  &trans          &trans          &trans        &trans           &trans
-&trans  &mt LEFT_GUI    &mt LEFT_ALT    &mt LEFT_CONTROL    &mt LEFT_SHIFT  &trans                      &kp C_BRI_DN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans
-&trans  &mo 4           &mo 5           &mo 6               &trans          &trans  &trans    &trans    &trans        &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &trans
-                                        &trans              &trans          &trans  &trans    &mkp MB1  &mkp MB2      &mkp MB3        &trans
+&trans  &trans       &trans       &trans           &trans         &trans                      &kp C_MUTE    &kp C_VOL_DN    &kp C_VOL_UP    &kp C_PREV    &kp C_PP         &kp C_NEXT
+&trans  &trans       &trans       &trans           &trans         &trans                      &kp C_BRI_UP  &trans          &trans          &trans        &trans           &trans
+&trans  &mt LEFT_GUI &mt LEFT_ALT &mt LEFT_CONTROL &mt LEFT_SHIFT &trans                      &kp C_BRI_DN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans
+&trans  &mo 4        &mo 5        &mo 6            &mo 7          &trans  &trans    &trans    &trans        &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP  &msc SCRL_RIGHT  &trans
+                                  &trans           &trans         &trans  &trans    &mkp MB1  &mkp MB2      &mkp MB3        &trans
             >;
 
             label = "Mouse";
@@ -256,7 +258,7 @@
 &kp ESC    &kp N1  &kp N2  &kp N3  &kp N4        &kp N5                                &kp N6    &kp N7      &kp N8     &kp N9   &kp N0    &trans
 &kp TAB    &kp Q   &kp W   &kp E   &kp R         &kp T                                 &kp Y     &kp U       &kp I      &kp O    &kp P     &trans
 &kp LCTRL  &kp A   &kp S   &kp D   &kp F         &kp G                                 &kp H     &kp J       &kp K      &kp L    &kp SEMI  &trans
-&kp LSHFT  &kp Z   &kp X   &kp C   &kp V         &kp B      &trans           &trans     &kp N     &kp M       &kp COMMA  &kp DOT  &kp FSLH  &trans
+&kp LSHFT  &kp Z   &kp X   &kp C   &kp V         &kp B      &trans          &trans     &kp N     &kp M       &kp COMMA  &kp DOT  &kp FSLH  &trans
                            &trans  &kp LEFT_ALT  &kp SPACE  &kp LEFT_GUI    &kp ENTER  &kp BSPC  &kp DELETE  &trans
             >;
 
