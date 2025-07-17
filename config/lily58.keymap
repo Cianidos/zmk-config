@@ -163,7 +163,7 @@
 &trans  &kp Q             &kp W             &kp F                 &kp P               &kp B                                 &kp J            &kp L               &kp U                 &kp Y             &kp SQT           &trans
 &trans  &hrml LEFT_GUI A  &hrml LEFT_ALT R  &hrml LEFT_CONTROL S  &hrml LEFT_SHIFT T  &kp G                                 &kp M            &hrmr LEFT_SHIFT N  &hrmr LEFT_CONTROL E  &hrmr LEFT_ALT I  &hrmr LEFT_GUI O  &trans
 &trans  &kp Z             &kp X             &kp C                 &kp D               &kp V          &tog 8        &trans   &kp K            &kp H               &kp COMMA             &kp DOT           &kp FSLH          &trans
-                                            &trans                &kp ESCAPE          &cltl 2 SPACE  &lt 3 TAB     &kp RET  &lt 1 BACKSPACE  &kp DELETE          &trans
+                                            &trans                &kp ESCAPE          &lt 2 SPACE  &lt 3 TAB     &kp RET  &lt 1 BACKSPACE  &kp DELETE          &trans
             >;
 
             label = "Base";
