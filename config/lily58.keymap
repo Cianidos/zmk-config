@@ -172,9 +172,9 @@
         nums {
             bindings = <
 &studio_unlock  &trans     &trans  &trans  &trans   &trans                          &trans  &trans  &trans  &trans  &trans  &trans
-&trans          &kp LBKT   &kp N7  &kp N8  &kp N9   &kp RBKT                        &trans  &trans  &trans  &trans  &trans  &trans
-&trans          &kp SEMI   &kp N4  &kp N5  &kp N6   &kp EQUAL                       &trans  &trans  &trans  &trans  &trans  &trans
-&trans          &kp GRAVE  &kp N1  &kp N2  &kp N3   &kp BSLH   &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans          &kp LBKT   &kp N7  &kp N8  &kp N9   &kp RBKT                        &trans  &F1     &F2     &F3     &F4     &trans
+&trans          &kp SEMI   &kp N4  &kp N5  &kp N6   &kp EQUAL                       &trans  &F5     &F6     &F7     &F8     &trans
+&trans          &kp GRAVE  &kp N1  &kp N2  &kp N3   &kp BSLH   &trans       &trans  &trans  &F9     &F10    &F11    &F12    &trans
                                    &trans  &kp N0   &kp SPACE  &kp MINUS    &trans  &trans  &trans  &trans
             >;
 
