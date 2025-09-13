@@ -122,9 +122,9 @@
             hold-trigger-on-release;
         };
 
-        brml: hrml {
+        brml: brml {
             compatible = "zmk,behavior-hold-tap";
-            label = "HRML";
+            label = "BRML";
             bindings = <&kp>, <&kp>;
             #binding-cells = <2>;
             flavor = "balanced";
@@ -136,9 +136,9 @@
             hold-trigger-on-release;
         };
 
-        brmr: hrmr {
+        brmr: brmr {
             compatible = "zmk,behavior-hold-tap";
-            label = "HRMR";
+            label = "BRMR";
             bindings = <&kp>, <&kp>;
             #binding-cells = <2>;
             flavor = "balanced";
@@ -190,7 +190,7 @@
 &trans  &trans            &trans             &trans                 &trans               &trans                                &trans           &trans               &trans                    &trans              &trans               &trans
 &trans  &kp Q             &kp W              &kp F                  &kp P                &kp B                                 &kp J            &kp L                &kp U                     &kp Y               &kp SQT              &trans
 &trans  &hrml LEFT_GUI A  &hrml LEFT_ALT R   &hrml LEFT_CONTROL S   &hrml LEFT_SHIFT T   &kp G                                 &kp M            &hrmr LEFT_SHIFT N   &hrmr LEFT_CONTROL E      &hrmr LEFT_ALT I    &hrmr LEFT_GUI O     &trans
-&trans  &brml RIGHT_GUI Z &brml RIGHT_ALT X  &hrml RIGHT_CONTROL C  &hrml RIGHT_SHIFT D  &kp V          &tog 8        &trans   &kp K            &hrmr RIGHT_SHIFT H  &hrmr RIGHT_CONTROL COMMA &hrmr RIGHT_ALT DOT &hrmr RIGHT_GUI FSLH &trans
+&trans  &brml RIGHT_GUI Z &brml RIGHT_ALT X  &brml RIGHT_CONTROL C  &brml RIGHT_SHIFT D  &kp V          &tog 8        &trans   &kp K            &brmr RIGHT_SHIFT H  &brmr RIGHT_CONTROL COMMA &brmr RIGHT_ALT DOT &brmr RIGHT_GUI FSLH &trans
                                             &trans                  &kp ESCAPE           &lt 2 SPACE    &lt 3 TAB     &kp RET  &lt 1 BACKSPACE  &kp DELETE           &trans
             >;
 
