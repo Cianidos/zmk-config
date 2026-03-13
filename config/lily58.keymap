@@ -319,10 +319,10 @@
         // Layer 0: Colemak-DH, home row mods (GUI/ALT/CTRL/SHIFT), thumb layer-taps
         base {
             bindings = <
-&trans     &trans             &trans             &trans                 &trans               &trans                             &trans           &trans               &trans                     &trans               &trans                &trans
-&trans     &kp Q              &kp W              &kp F                  &kp P                &kp B                              &kp J            &kp L                &kp U                      &kp Y                &kp SQT               &trans
-&layer_ru  &hrml LEFT_GUI A   &hrml LEFT_ALT R   &hrml LEFT_CONTROL S   &hrml LEFT_SHIFT T   &kp G                              &kp M            &hrmr LEFT_SHIFT N   &hrmr LEFT_CONTROL E       &hrmr LEFT_ALT I     &hrmr LEFT_GUI O      &trans
-&trans     &brml RIGHT_GUI Z  &brml RIGHT_ALT X  &brml RIGHT_CONTROL C  &brml RIGHT_SHIFT D  &kp V        &tog GAMING  &trans   &kp K            &brmr RIGHT_SHIFT H  &brmr RIGHT_CONTROL COMMA  &brmr RIGHT_ALT DOT  &brmr RIGHT_GUI FSLH  &trans
+&trans       &trans             &trans             &trans                 &trans               &trans                             &trans           &trans               &trans                     &trans               &trans                &trans
+&kp CAPSLOCK &kp Q              &kp W              &kp F                  &kp P                &kp B                              &kp J            &kp L                &kp U                      &kp Y                &kp SQT               &trans
+&layer_ru    &hrml LEFT_GUI A   &hrml LEFT_ALT R   &hrml LEFT_CONTROL S   &hrml LEFT_SHIFT T   &kp G                              &kp M            &hrmr LEFT_SHIFT N   &hrmr LEFT_CONTROL E       &hrmr LEFT_ALT I     &hrmr LEFT_GUI O      &trans
+&trans       &brml RIGHT_GUI Z  &brml RIGHT_ALT X  &brml RIGHT_CONTROL C  &brml RIGHT_SHIFT D  &kp V        &tog GAMING  &trans   &kp K            &brmr RIGHT_SHIFT H  &brmr RIGHT_CONTROL COMMA  &brmr RIGHT_ALT DOT  &brmr RIGHT_GUI FSLH  &trans
                                                   &trans                 &kp ESCAPE           &lt NAV SPACE  &lt MOUSE TAB    &kp RET  &lt NUM BACKSPACE  &kp DELETE           &trans
             >;
 
@@ -337,10 +337,10 @@
         ru {
             display-name = "Ru";
             bindings = <
-&trans     &kp GRAVE           &kp SEMI             &kp RBKT               &kp M                &kp X                                &trans   &kp DOT              &kp SQT                 &trans              &trans               &trans
-&trans     &kp Z               &kp I                &kp A                  &kp G                &kp COMMA                            &kp Q    &kp K                &kp E                   &kp S               &mm_sqt              &trans
-&layer_en  &hrml LEFT_GUI F    &hrml LEFT_ALT H     &hrml LEFT_CONTROL C   &hrml LEFT_SHIFT N   &kp U                                &kp V    &hrmr LEFT_SHIFT Y   &hrmr LEFT_CONTROL T    &hrmr LEFT_ALT B    &hrmr LEFT_GUI J     &trans
-&trans     &brml RIGHT_GUI P   &brml RIGHT_ALT O    &brml RIGHT_CONTROL W  &brml RIGHT_SHIFT L  &kp D       &tog GAMING  &trans      &kp R    &brmr RIGHT_SHIFT LBKT  &mm_comma             &mm_dot              &mm_fslh             &trans
+&trans       &kp GRAVE           &kp SEMI             &kp RBKT               &kp M                &kp X                                &trans   &kp DOT              &kp SQT                 &trans              &trans               &trans
+&kp CAPSLOCK &kp Z               &kp I                &kp A                  &kp G                &kp COMMA                            &kp Q    &kp K                &kp E                   &kp S               &mm_sqt              &trans
+&layer_en    &hrml LEFT_GUI F    &hrml LEFT_ALT H     &hrml LEFT_CONTROL C   &hrml LEFT_SHIFT N   &kp U                                &kp V    &hrmr LEFT_SHIFT Y   &hrmr LEFT_CONTROL T    &hrmr LEFT_ALT B    &hrmr LEFT_GUI J     &trans
+&trans       &brml RIGHT_GUI P   &brml RIGHT_ALT O    &brml RIGHT_CONTROL W  &brml RIGHT_SHIFT L  &kp D       &tog GAMING  &trans      &kp R    &brmr RIGHT_SHIFT LBKT  &mm_comma             &mm_dot              &mm_fslh             &trans
                                                      &trans                 &kp ESCAPE           &lt NAV SPACE  &lt MOUSE TAB   &kp RET     &lt_lang NUM BACKSPACE  &kp DELETE  &trans
             >;
         };
