@@ -148,6 +148,22 @@
                 <&macro_tap>, <&lang_tog>;
         };
 
+        // Shifted en_key: shift is already released by mod-morph before this fires.
+        // Toggles to EN, presses Shift+key, releases, toggles back.
+        en_key_s: en_key_s {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            wait-ms = <10>;
+            tap-ms = <30>;
+            bindings =
+                <&macro_tap>, <&lang_tog>,
+                <&macro_press>, <&kp LSHFT>,
+                <&macro_tap>,
+                <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
+                <&macro_release>, <&kp LSHFT>,
+                <&macro_tap>, <&lang_tog>;
+        };
+
         // Momentary layer + toggle OS language on press/release.
         // Used from RU to access NUM layer in EN mode.
         mo_lang: mo_lang {
@@ -227,21 +243,6 @@
             hold-trigger-on-release;
         };
 
-        // Bottom row mods — right hand, tap sends key via en_key (for punctuation on RU layer)
-        brmr_en: brmr_en {
-            compatible = "zmk,behavior-hold-tap";
-            label = "BRMR_EN";
-            bindings = <&kp>, <&en_key>;
-
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <180>;
-            quick-tap-ms = <150>;
-            require-prior-idle-ms = <20>;
-            hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38 39 40 41 50 51 52 53 42 54 55>;
-            hold-trigger-on-release;
-        };
-
         // Layer-tap with language toggle — hold activates mo_lang, tap sends kp
         lt_lang: lt_lang {
             compatible = "zmk,behavior-hold-tap";
@@ -280,6 +281,36 @@
             require-prior-idle-ms = <20>;
             hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38 39 40 41 50 51 52 53 42 54 55>;
         };
+
+        // Mod-morphs for RU punctuation: unshifted = en_key, shifted = en_key_s
+        // Mod-morph masks shift before calling the binding, so en_key_s gets clean CapsLock toggle.
+        mm_sqt: mm_sqt {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&en_key SQT>, <&en_key_s SQT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_comma: mm_comma {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&en_key COMMA>, <&en_key_s COMMA>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_dot: mm_dot {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&en_key DOT>, <&en_key_s DOT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_fslh: mm_fslh {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&en_key FSLH>, <&en_key_s FSLH>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
     };
 
     keymap {
@@ -299,17 +330,17 @@
         };
 
         // Layer 1: Russian — Colemak-DH phonetic
-        //   Number row: rare Cyrillic letters (ё ж ъ ь ч | ю э)
-        //   Punctuation ' , . / via en_key (toggles to EN, types, toggles back)
-        //   NUM thumb key uses mo_lang to switch OS to EN while NUM is held
+        //   Number row: rare Cyrillic (ё ж ъ ь ч | ю э)
+        //   Punctuation ' , . / via mod-morph: unshifted=en_key, shifted=en_key_s
+        //   NUM thumb uses mo_lang to switch OS to EN while held
         // Home row: А Р С Т Г | М Н Е И О
         ru {
             display-name = "Ru";
             bindings = <
 &trans     &kp GRAVE           &kp SEMI             &kp RBKT               &kp M                &kp X                                &trans   &kp DOT              &kp SQT                 &trans              &trans               &trans
-&trans     &kp Z               &kp I                &kp A                  &kp G                &kp COMMA                            &kp Q    &kp K                &kp E                   &kp S               &en_key SQT          &trans
+&trans     &kp Z               &kp I                &kp A                  &kp G                &kp COMMA                            &kp Q    &kp K                &kp E                   &kp S               &mm_sqt              &trans
 &layer_en  &hrml LEFT_GUI F    &hrml LEFT_ALT H     &hrml LEFT_CONTROL C   &hrml LEFT_SHIFT N   &kp U                                &kp V    &hrmr LEFT_SHIFT Y   &hrmr LEFT_CONTROL T    &hrmr LEFT_ALT B    &hrmr LEFT_GUI J     &trans
-&trans     &brml RIGHT_GUI P   &brml RIGHT_ALT O    &brml RIGHT_CONTROL W  &brml RIGHT_SHIFT L  &kp D       &tog GAMING  &trans      &kp R    &brmr RIGHT_SHIFT LBKT  &brmr_en RIGHT_CONTROL COMMA  &brmr_en RIGHT_ALT DOT  &brmr_en RIGHT_GUI FSLH  &trans
+&trans     &brml RIGHT_GUI P   &brml RIGHT_ALT O    &brml RIGHT_CONTROL W  &brml RIGHT_SHIFT L  &kp D       &tog GAMING  &trans      &kp R    &brmr RIGHT_SHIFT LBKT  &mm_comma             &mm_dot              &mm_fslh             &trans
                                                      &trans                 &kp ESCAPE           &lt NAV SPACE  &lt MOUSE TAB   &kp RET     &lt_lang NUM BACKSPACE  &kp DELETE  &trans
             >;
         };
