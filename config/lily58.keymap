@@ -92,6 +92,50 @@
                 <&macro_release>,
                 <&macro_param_1to1 &mo MACRO_PLACEHOLDER &macro_param_2to1 &kp MACRO_PLACEHOLDER>;
         };
+
+        // Toggle OS input method (Meta+Space in GNOME)
+        lang_tog: lang_tog {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <30>;
+            bindings = <&kp LG(SPACE)>;
+        };
+
+        // Switch to English: flip hw layer then notify OS
+        layer_en: layer_en {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings = <&to 0>, <&lang_tog>;
+        };
+
+        // Switch to Russian: flip hw layer then notify OS
+        layer_ru: layer_ru {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings = <&to 9>, <&lang_tog>;
+        };
+
+        // Type one key in English while OS is in Russian:
+        // toggle OS to EN, hold key, release key, toggle OS back to RU.
+        en_key: en_key {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            wait-ms = <10>;
+            tap-ms = <30>;
+            bindings =
+                <&macro_tap>, <&lang_tog>,
+                <&macro_press>,
+                <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
+                <&macro_pause_for_release>,
+                <&macro_release>,
+                <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
+                <&macro_tap>, <&lang_tog>;
+        };
     };
 
     behaviors {
@@ -192,7 +236,7 @@
             bindings = <
 &trans  &trans             &trans             &trans                 &trans               &trans                             &trans           &trans               &trans                     &trans               &trans                &trans
 &trans  &kp Q              &kp W              &kp F                  &kp P                &kp B                              &kp J            &kp L                &kp U                      &kp Y                &kp SQT               &trans
-&trans  &hrml LEFT_GUI A   &hrml LEFT_ALT R   &hrml LEFT_CONTROL S   &hrml LEFT_SHIFT T   &kp G                              &kp M            &hrmr LEFT_SHIFT N   &hrmr LEFT_CONTROL E       &hrmr LEFT_ALT I     &hrmr LEFT_GUI O      &trans
+&layer_ru  &hrml LEFT_GUI A   &hrml LEFT_ALT R   &hrml LEFT_CONTROL S   &hrml LEFT_SHIFT T   &kp G                              &kp M            &hrmr LEFT_SHIFT N   &hrmr LEFT_CONTROL E       &hrmr LEFT_ALT I     &hrmr LEFT_GUI O      &trans
 &trans  &brml RIGHT_GUI Z  &brml RIGHT_ALT X  &brml RIGHT_CONTROL C  &brml RIGHT_SHIFT D  &kp V        &tog 8       &trans   &kp K            &brmr RIGHT_SHIFT H  &brmr RIGHT_CONTROL COMMA  &brmr RIGHT_ALT DOT  &brmr RIGHT_GUI FSLH  &trans
                                               &trans                 &kp ESCAPE           &lt 2 SPACE  &lt 3 TAB    &kp RET  &lt 1 BACKSPACE  &kp DELETE           &trans
             >;
@@ -257,6 +301,45 @@
             >;
 
             label = "Gaming";
+        };
+
+        // Russian layer — same structure as base, keys translated:
+        //   hw Colemak keycode → phonetic_mac Cyrillic → йцукен keycode
+        // OS must be set to standard Russian (йцукен/winkeys).
+        // Outer home-row-left key switches back to EN.
+        // Right thumb activates ru_nums (layer 10) instead of nums.
+        ru {
+            display-name = "Ru";
+            bindings = <
+&trans     &trans              &trans               &trans                 &trans               &trans                               &trans   &trans               &trans                  &trans              &trans               &trans
+&trans     &kp Z               &kp I                &kp T                  &kp H                &kp N                                &kp S    &kp E                &kp B                   &kp J               &kp G                &trans
+&layer_en  &hrml LEFT_GUI F    &hrml LEFT_ALT C     &hrml LEFT_CONTROL L   &hrml LEFT_SHIFT A   &kp U                                &kp X    &hrmr LEFT_SHIFT Q   &hrmr LEFT_CONTROL R    &hrmr LEFT_ALT K    &hrmr LEFT_GUI SEMI  &trans
+&trans     &brml RIGHT_GUI P   &brml RIGHT_ALT LBKT &brml RIGHT_CONTROL W  &brml RIGHT_SHIFT D  &kp COMMA   &tog 8       &trans      &kp Y    &brmr RIGHT_SHIFT V  &en_key COMMA           &en_key DOT         &en_key FSLH         &trans
+                                                    &trans                 &kp ESCAPE           &lt 2 SPACE  &lt 3 TAB   &kp RET     &lt 10 BACKSPACE  &kp DELETE  &trans
+            >;
+        };
+
+        // Numbers layer for RU mode — same as nums but special symbol keys
+        // remapped so that OS йцукен produces the Cyrillic letters that
+        // phonetic_mac gave from those positions.
+        //
+        //  physical key → sends → йцукен → letter
+        //  LBKT  (Ю in phonetic) → DOT   → AB09 → Ю
+        //  RBKT  (Ж in phonetic) → SEMI  → AC10 → Ж
+        //  SEMI  (unused)        → GRAVE → TLDE → Ё
+        //  EQUAL (Ъ in phonetic) → RBKT  → AD12 → Ъ
+        //  GRAVE (Щ in phonetic) → O     → AD09 → Щ
+        //  BSLH  (Э in phonetic) → SQT   → AC11 → Э
+        //  MINUS thumb (Ь)       → M     → AB07 → Ь
+        ru_nums {
+            display-name = "RuNums";
+            bindings = <
+&trans  &trans      &trans   &trans   &trans   &trans                          &trans  &kp F1   &kp F2            &kp F3        &kp F4        &kp F5
+&trans  &kp DOT     &kp N7   &kp N8   &kp N9   &kp SEMI                        &kp F6  &kp F7   &kp F8            &kp F9        &kp F10       &kp F11
+&trans  &kp GRAVE   &kp N4   &kp N5   &kp N6   &kp RBKT                        &kp F12 &trans   &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_GUI  &trans
+&trans  &kp O       &kp N1   &kp N2   &kp N3   &kp SQT    &trans       &trans  &trans  &trans   &trans            &trans        &trans        &trans
+                             &trans   &kp N0   &kp SPACE  &kp M        &trans  &trans  &trans   &trans
+            >;
         };
     };
 };
