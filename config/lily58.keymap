@@ -95,6 +95,7 @@
     };
 
     behaviors {
+        // Home row mods — left hand (triggers on right-side keys only)
         hrml: hrml {
             compatible = "zmk,behavior-hold-tap";
             label = "HRML";
@@ -104,14 +105,12 @@
             flavor = "balanced";
             tapping-term-ms = <180>;
             quick-tap-ms = <150>;
-
-            // global-quick-tap-ms = <150>;
-
             require-prior-idle-ms = <20>;
             hold-trigger-key-positions = <6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 43 44 45 46 47 54 55 56 57 48 49 52 53>;
             hold-trigger-on-release;
         };
 
+        // Home row mods — right hand (triggers on left-side keys only)
         hrmr: hrmr {
             compatible = "zmk,behavior-hold-tap";
             label = "HRMR";
@@ -121,14 +120,12 @@
             flavor = "balanced";
             tapping-term-ms = <180>;
             quick-tap-ms = <150>;
-
-            // global-quick-tap-ms = <150>;
-
             require-prior-idle-ms = <20>;
             hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38 39 40 41 50 51 52 53 42 54 55>;
             hold-trigger-on-release;
         };
 
+        // Bottom row mods — left hand
         brml: brml {
             compatible = "zmk,behavior-hold-tap";
             label = "BRML";
@@ -138,14 +135,12 @@
             flavor = "balanced";
             tapping-term-ms = <180>;
             quick-tap-ms = <150>;
-
-            // global-quick-tap-ms = <150>;
-
             require-prior-idle-ms = <20>;
             hold-trigger-key-positions = <6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 43 44 45 46 47 54 55 56 57 48 49 52 53>;
             hold-trigger-on-release;
         };
 
+        // Bottom row mods — right hand
         brmr: brmr {
             compatible = "zmk,behavior-hold-tap";
             label = "BRMR";
@@ -155,16 +150,12 @@
             flavor = "balanced";
             tapping-term-ms = <180>;
             quick-tap-ms = <150>;
-
-            // global-quick-tap-ms = <150>;
-
             require-prior-idle-ms = <20>;
             hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38 39 40 41 50 51 52 53 42 54 55>;
             hold-trigger-on-release;
         };
 
-        // custom layer tap left
-
+        // Layer-tap for thumb keys — left
         cltl: cltl {
             compatible = "zmk,behavior-hold-tap";
             label = "CLTL";
@@ -174,17 +165,11 @@
             flavor = "balanced";
             tapping-term-ms = <180>;
             quick-tap-ms = <150>;
-
-            // global-quick-tap-ms = <150>;
-
             require-prior-idle-ms = <20>;
             hold-trigger-key-positions = <6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 43 44 45 46 47 54 55 56 57 48 49 52 53>;
-
-            // hold-trigger-on-release;
         };
 
-        // custom layer tap right
-
+        // Layer-tap for thumb keys — right
         cltr: cltr {
             compatible = "zmk,behavior-hold-tap";
             label = "CLTR";
@@ -194,19 +179,15 @@
             flavor = "balanced";
             tapping-term-ms = <180>;
             quick-tap-ms = <150>;
-
-            // global-quick-tap-ms = <150>;
-
             require-prior-idle-ms = <20>;
             hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38 39 40 41 50 51 52 53 42 54 55>;
-
-            // hold-trigger-on-release; // REMOVED
         };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
+        // Colemak-DH, home row mods (GUI/ALT/CTRL/SHIFT), thumb layer-taps
         base {
             bindings = <
 &trans  &trans             &trans             &trans                 &trans               &trans                             &trans           &trans               &trans                     &trans               &trans                &trans
@@ -219,6 +200,7 @@
             label = "Base";
         };
 
+        // Numbers, brackets, F-keys; right thumb activates
         nums {
             bindings = <
 &studio_unlock  &trans     &trans  &trans  &trans  &trans                          &kp F1  &kp F2          &kp F3            &kp F4        &kp F5        &kp F6
@@ -231,6 +213,7 @@
             label = "Nums";
         };
 
+        // Navigation, undo/redo/cut/copy/paste, caps-word, BT/output; left thumb activates
         arrows {
             bindings = <
 &trans  &trans        &trans        &trans            &trans          &trans                       &out OUT_TOG   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR
@@ -243,6 +226,7 @@
             label = "Arrows";
         };
 
+        // Mouse move/scroll/buttons, media, brightness; left thumb activates. Bottom row selects speed sub-layer.
         mouse {
             bindings = <
 &trans  &trans        &trans        &trans            &trans          &trans                      &kp C_MUTE    &kp C_VOL_DN    &kp C_VOL_UP    &kp C_PREV    &kp C_PP         &kp C_NEXT
@@ -255,54 +239,14 @@
             label = "Mouse";
         };
 
-        mouse_slow {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                      &trans    &trans          &trans          &trans        &trans           &trans
-&trans  &trans  &trans  &trans  &trans  &trans                      &trans    &trans          &trans          &trans        &trans           &trans
-&trans  &trans  &trans  &trans  &trans  &trans                      &trans    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &msc MOVE_LEFT  &msc MOVE_DOWN  &msc MOVE_UP  &msc MOVE_RIGHT  &trans
-                        &trans  &trans  &trans  &trans    &mkp MB1  &mkp MB2  &mkp MB3        &trans
-            >;
+        // Speed sub-layers: fully transparent — movement keys fall through to Mouse.
+        // Input processors in mmv_input_listener/msc_input_listener key off the active layer number.
+        mouse_slow   { bindings = <&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans>; label = "Mouse Slow"; };
+        mouse_medium { bindings = <&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans>; label = "Mouse Medium"; };
+        mouse_fast   { bindings = <&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans>; label = "Mouse Fast"; };
+        mouse_faster { bindings = <&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans>; label = "Mouse Faster"; };
 
-            label = "Mouse Slow";
-        };
-
-        mouse_medium {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                      &trans    &trans          &trans          &trans        &trans           &trans
-&trans  &trans  &trans  &trans  &trans  &trans                      &trans    &trans          &trans          &trans        &trans           &trans
-&trans  &trans  &trans  &trans  &trans  &trans                      &trans    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &msc MOVE_LEFT  &msc MOVE_DOWN  &msc MOVE_UP  &msc MOVE_RIGHT  &trans
-                        &trans  &trans  &trans  &trans    &mkp MB1  &mkp MB2  &mkp MB3        &trans
-            >;
-
-            label = "Mouse Medium";
-        };
-
-        mouse_fast {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                      &trans    &trans          &trans          &trans        &trans           &trans
-&trans  &trans  &trans  &trans  &trans  &trans                      &trans    &trans          &trans          &trans        &trans           &trans
-&trans  &trans  &trans  &trans  &trans  &trans                      &trans    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &msc MOVE_LEFT  &msc MOVE_DOWN  &msc MOVE_UP  &msc MOVE_RIGHT  &trans
-                        &trans  &trans  &trans  &trans    &mkp MB1  &mkp MB2  &mkp MB3        &trans
-            >;
-
-            label = "Mouse Fast";
-        };
-
-        mouse_faster {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                      &trans    &trans          &trans          &trans        &trans           &trans
-&trans  &trans  &trans  &trans  &trans  &trans                      &trans    &trans          &trans          &trans        &trans           &trans
-&trans  &trans  &trans  &trans  &trans  &trans                      &trans    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &msc MOVE_LEFT  &msc MOVE_DOWN  &msc MOVE_UP  &msc MOVE_RIGHT  &trans
-                        &trans  &trans  &trans  &trans    &mkp MB1  &mkp MB2  &mkp MB3        &trans
-            >;
-
-            label = "Mouse Faster";
-        };
-
+        // Standard QWERTY for gaming; toggled with &tog 8
         gaming {
             bindings = <
 &kp ESC    &kp N1  &kp N2  &kp N3  &kp N4        &kp N5                                &kp N6    &kp N7      &kp N8     &kp N9   &kp N0    &trans

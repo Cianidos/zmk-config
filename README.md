@@ -1,29 +1,41 @@
-### Инструкция по самостоятельной прошивке
-1. Зарегистрируйтесь или войдите на GitHub, нажав Sign Up для регистрации или Sign In для входа справа вверху на этой странице
-2. Сделайте форк этого репозитория в свой аккаунт GitHub - для этого нажмите кнопку Fork (третья по счету справа от названия репозитория) на [главной странице репозитория](https://github.com/oneofthemoons/zmk-config/tree/master)
- и проследуйте дальнейшим инструкциям от GitHub
-3. Перейдите на ресурс https://nickcoutsos.github.io/keymap-editor/ и нажмите на кнопку "Authorize". Авторизуйте свой форк репозитория согласно инструкции на ресурсе
-4. Поздравляем! Теперь вы можете настроить прошивку прямо в графическом интерфейсе
-5. После внесения собственных настроек нажмите кнопку "Save" и придумайте любое название для ваших изменений
-6. Перейдите на страницу вашего форкнутого репозитория через раздел "Repositories" в вашем аккаунте GitHub
-7. Выберите вкладку Actions
-8. Дождитесь, пока слева от самого верхнего action-а в списке появится зеленый кружочек, означающий, что сборка прошивки завершена
-9. Перейдите в самый верхний action в списке, нажмите на "firmware"
-10. Скачается архив с прошивкой, разархивируйте его
-11. Подключите левую половинку к компьютеру по проводу
-12. Дважды нажмите кнопку RESET (маленькая кнопка на самом правом краю левой половинки)
-13. Перетащите на флешку NICENANO файл с названием \*_left\*.uf2 (вместо звездочки может быть любая надпись)
-14. Повторите шаги 11-12 для правой половинки клавиатуры
-15. Перетащите на флешку NICENANO файл с названием \*_right\*.uf2 (вместо звездочки может быть любая надпись)
-16. Ваша клавиатура прошита, можете отключать провод от правой половинки и тестировать результат
+# ZMK config — Lily58 (nice!nano v2)
 
-> Если после перепрошивки вы встретились с лагами/багами/проблемами, сбросьте внутреннюю память клавиатуры, зашив в обе половинки прошивку settings_reset.uf2, после чего повторите стандартную прошивку обеих половинок снова.
+Miryoku-inspired layout with home row mods, mouse control, and a gaming mode.
 
-Если вы столкнулись с трудностями во время прошивки, свяжитесь с нами по контактам в инструкции или [на нашем сайте](https://klavus.tech/contacts).
+## Layers
 
-### Эксперементальные возможности по обновлению раскладки на лету
+| # | Name | Activated by |
+|---|------|-------------|
+| 0 | Base | always |
+| 1 | Nums | right thumb hold |
+| 2 | Arrows | left inner thumb hold |
+| 3 | Mouse | left outer thumb hold |
+| 4–7 | Mouse Slow/Medium/Fast/Faster | bottom-row hold while in Mouse |
+| 8 | Gaming | `&tog 8` (Z-column key) |
 
-1. Открыть [zmk.studio](https://zmk.studio) в современном браузере (проверено в основанных на chromium). Альтернативно можно скачать отдельный клиент с [github репозитория](https://github.com/zmkfirmware/zmk-studio/releases).
-2. Нажать сочетание клавиш с назначенным `&studio_unlock` по умолчанию `Cлой 2 + Esc`. Для перехода на слой 2 одновременно нажмите клавишу слоя на правой половинке. (Можно назначить на любую клавишу в `config/lily58.keymap`.
-3. В графическом интерфейсе назначать клавиши прямо по bluetooth или usb.
+## Base layout (Colemak-DH)
 
+Home row mods: `GUI / ALT / CTRL / SHIFT` on both hands (home row + bottom row).
+Hold-tap with `hold-trigger-key-positions` — each hand's mods only fire on opposite-hand keys.
+
+## Mouse layer
+
+- Right hand: move (IJKL-style) + scroll
+- Left hand: modifiers (no speed change)
+- Bottom-left row: hold `&mo 4/5/6/7` to change cursor/scroll speed while staying in mouse mode
+
+## Bluetooth / output
+
+BT controls on the Arrows layer (top row, right side): `OUT_TOG`, `BT_SEL 0–3`, `BT_CLR`.
+
+## Flashing
+
+1. Trigger a GitHub Actions build (push a change or re-run the workflow)
+2. Download the `firmware` artifact
+3. Double-tap RESET on each half, drag the matching `.uf2` onto the `NICENANO` drive
+
+If the keyboard misbehaves after reflashing, flash `settings_reset.uf2` to both halves first, then reflash normally.
+
+## Keymap editor
+
+[nickcoutsos.github.io/keymap-editor](https://nickcoutsos.github.io/keymap-editor/) — authorize your GitHub fork for a visual editor.
