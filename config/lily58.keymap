@@ -76,7 +76,40 @@
 };
 
 / {
-    combos { compatible = "zmk,combos"; };
+    combos {
+        compatible = "zmk,combos";
+
+        // Shift + punctuation combos for RU layer.
+        // Bypass mod-morph (which can't reliably detect Shift from hold-taps)
+        // by firing en_key_s directly when both physical keys overlap.
+        combo_shift_sqt {
+            timeout-ms = <80>;
+            key-positions = <28 22>;
+            bindings = <&en_key_s SQT>;
+            layers = <RU>;
+        };
+
+        combo_shift_comma {
+            timeout-ms = <80>;
+            key-positions = <28 46>;
+            bindings = <&en_key_s COMMA>;
+            layers = <RU>;
+        };
+
+        combo_shift_dot {
+            timeout-ms = <80>;
+            key-positions = <28 47>;
+            bindings = <&en_key_s DOT>;
+            layers = <RU>;
+        };
+
+        combo_shift_fslh {
+            timeout-ms = <80>;
+            key-positions = <28 48>;
+            bindings = <&en_key_s FSLH>;
+            layers = <RU>;
+        };
+    };
 
     macros {
         /**
@@ -208,6 +241,23 @@
             require-prior-idle-ms = <20>;
             hold-trigger-key-positions = <6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 43 44 45 46 47 54 55 56 57 48 49 52 53>;
             hold-trigger-on-release;
+        };
+
+        // Home row mods — left hand, no hold-trigger-on-release.
+        // Used for Shift in RU layer so mod-morph detects Shift on key press
+        // (not delayed until release). Combos handle the shifted punctuation,
+        // this ensures mod-morph also works as fallback.
+        hrml_norel: hrml_norel {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HRML_NOREL";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <180>;
+            quick-tap-ms = <150>;
+            require-prior-idle-ms = <20>;
+            hold-trigger-key-positions = <6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 43 44 45 46 47 54 55 56 57 48 49 52 53>;
         };
 
         // Home row mods — right hand (triggers on left-side keys only)
@@ -352,7 +402,7 @@
             bindings = <
 &trans       &kp GRAVE           &kp SEMI             &kp O                  &kp M                &kp RBKT                             &trans   &kp DOT              &kp SQT                 &trans              &trans               &trans
 &kp CAPSLOCK &kp Z               &kp I                &kp A                  &kp G                &kp COMMA                            &kp Q    &kp K                &kp E                   &kp S               &mm_sqt              &trans
-&layer_en    &hrml LEFT_GUI F    &hrml LEFT_ALT H     &hrml LEFT_CONTROL C   &hrml LEFT_SHIFT N   &kp U                                &kp V    &hrmr LEFT_SHIFT Y   &hrmr LEFT_CONTROL T    &hrmr LEFT_ALT B    &hrmr LEFT_GUI J     &trans
+&layer_en    &hrml LEFT_GUI F    &hrml LEFT_ALT H     &hrml LEFT_CONTROL C   &hrml_norel LEFT_SHIFT N   &kp U                                &kp V    &hrmr LEFT_SHIFT Y   &hrmr LEFT_CONTROL T    &hrmr LEFT_ALT B    &hrmr LEFT_GUI J     &trans
 &trans       &brml RIGHT_GUI P   &brml RIGHT_ALT X    &brml RIGHT_CONTROL W  &brml RIGHT_SHIFT L  &kp D       &tog GAMING  &trans      &kp R    &brmr RIGHT_SHIFT LBKT  &mm_comma             &mm_dot              &mm_fslh             &trans
                                                      &trans                 &kp ESCAPE           &lt NAV SPACE  &lt MOUSE TAB   &kp RET     &lt_lang NUM BACKSPACE  &kp DELETE  &trans
             >;
