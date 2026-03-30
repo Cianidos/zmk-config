@@ -139,11 +139,11 @@
             wait-ms = <10>;
             tap-ms = <30>;
             bindings =
+                <&macro_wait_time 10>,
                 <&macro_tap>, <&lang_tog>,
-                <&macro_wait_time 50>,
+                <&macro_wait_time 10>,
                 <&macro_tap>,
                 <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
-                <&macro_wait_time 10>,
                 <&macro_tap>, <&lang_tog>;
         };
 
@@ -158,13 +158,13 @@
             tap-ms = <30>;
             bindings =
                 <&macro_release>, <&kp LSHFT>, <&kp RSHFT>,
+                <&macro_wait_time 10>,
                 <&macro_tap>, <&lang_tog>,
-                <&macro_wait_time 50>,
+                <&macro_wait_time 10>,
                 <&macro_press>, <&kp LSHFT>,
                 <&macro_tap>,
                 <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
                 <&macro_release>, <&kp LSHFT>, <&kp RSHFT>,
-                <&macro_wait_time 10>,
                 <&macro_tap>, <&lang_tog>;
         };
 
@@ -259,8 +259,8 @@
 
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <180>;
-            quick-tap-ms = <150>;
+            tapping-term-ms = <170>;
+            quick-tap-ms = <140>;
         };
 
         // Layer-tap for thumb keys — left
