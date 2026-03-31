@@ -174,7 +174,7 @@
             bindings =
                 <&macro_release>, <&kp LSHFT>, <&kp RSHFT>,
                 <&macro_tap>, <&lang_tog>,
-                <&macro_wait_time 20>,
+                <&macro_wait_time 50>,
                 <&macro_tap>,
                 <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
                 <&macro_release>, <&kp LSHFT>, <&kp RSHFT>,
