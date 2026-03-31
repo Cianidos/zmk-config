@@ -79,15 +79,11 @@
     combos {
         compatible = "zmk,combos";
 
-        // Shift + punctuation combos for RU layer.
-        // Bypass mod-morph (which can't reliably detect Shift from hold-taps)
-        // by firing en_key_s directly when both physical keys overlap.
-        // Only ' still needs en_key (not in ЙЦУКЕН).
-        // Other combos removed — mod-morphs use native keycodes now, no timing issues.
+        // Shift+' combo for RU layer: " is native in ЙЦУКЕН (Shift+2)
         combo_shift_sqt {
             timeout-ms = <80>;
             key-positions = <28 22>;
-            bindings = <&en_key LS(SQT)>;
+            bindings = <&kp LS(N2)>;
             layers = <RU>;
         };
     };
@@ -153,39 +149,12 @@
             wait-ms = <10>;
             tap-ms = <30>;
             bindings =
-                <&macro_wait_time 10>,
                 <&macro_tap>, <&lang_tog>,
-                <&macro_wait_time 10>,
                 <&macro_tap>,
                 <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
                 <&macro_tap>, <&lang_tog>;
         };
 
-        // Shifted en_key: mod-morph strips Shift at ZMK level but OS HID still sees
-        // the physical Shift held. Release both shifts before each CapsLock tap so
-        // the OS doesn't see Shift+CapsLock (which toggles actual Caps Lock instead
-        // of switching language). After the macro ZMK re-applies physical key state.
-        en_key_s: en_key_s {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            wait-ms = <10>;
-            tap-ms = <30>;
-            bindings =
-                <&macro_release>, <&kp LSHFT>, <&kp RSHFT>,
-                <&macro_wait_time 10>,
-                <&macro_tap>, <&lang_tog>,
-                <&macro_wait_time 10>,
-                <&macro_press>, <&kp LSHFT>,
-                <&macro_tap>,
-                <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
-                <&macro_release>, <&kp LSHFT>, <&kp RSHFT>,
-                <&macro_tap>, <&lang_tog>;
-        };
-
-        // Momentary layer + toggle OS language on press/release.
-        // Used from RU to access NUM layer in EN mode.
-        // Shifts are released before each CapsLock tap to prevent Shift+CapsLock
-        // from triggering actual Caps Lock (instead of language switch).
         // Momentary layer + toggle OS language on press/release.
         // Layer is pressed FIRST so it activates immediately (before CapsLock tap),
         // avoiding a 30ms window where keypresses land on the wrong layer.
@@ -225,9 +194,8 @@
         };
 
         // Home row mods — left hand, no hold-trigger-on-release.
-        // Used for Shift in RU layer so mod-morph detects Shift on key press
-        // (not delayed until release). Combos handle the shifted punctuation,
-        // this ensures mod-morph also works as fallback.
+        // Used for Shift in RU layer so mm_sqt mod-morph reliably detects
+        // Shift on key press (not delayed until release).
         hrml_norel: hrml_norel {
             compatible = "zmk,behavior-hold-tap";
             label = "HRML_NOREL";
@@ -375,7 +343,7 @@
 
         // Layer 1: Russian — Colemak-DH phonetic
         //   Number row: rare Cyrillic (ё ж ъ ь ч | ю э)
-        //   Punctuation ' , . / via mod-morph: unshifted=en_key, shifted=en_key_s
+        //   Punctuation: , . / ? use native ЙЦУКЕН keycodes; ' uses en_key
         //   NUM thumb uses mo_lang to switch OS to EN while held
         // Home row: А Р С Т Г | М Н Е И О
         ru {
