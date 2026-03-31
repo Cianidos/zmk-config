@@ -85,28 +85,28 @@
         combo_shift_sqt {
             timeout-ms = <80>;
             key-positions = <28 22>;
-            bindings = <&en_key_s SQT>;
+            bindings = <&en_key LS(SQT)>;
             layers = <RU>;
         };
 
         combo_shift_comma {
             timeout-ms = <80>;
             key-positions = <28 46>;
-            bindings = <&en_key_s COMMA>;
+            bindings = <&en_key LS(COMMA)>;
             layers = <RU>;
         };
 
         combo_shift_dot {
             timeout-ms = <80>;
             key-positions = <28 47>;
-            bindings = <&en_key_s DOT>;
+            bindings = <&en_key LS(DOT)>;
             layers = <RU>;
         };
 
         combo_shift_fslh {
             timeout-ms = <80>;
             key-positions = <28 48>;
-            bindings = <&en_key_s FSLH>;
+            bindings = <&en_key LS(FSLH)>;
             layers = <RU>;
         };
     };
@@ -350,28 +350,28 @@
         mm_sqt: mm_sqt {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&en_key SQT>, <&en_key_s SQT>;
+            bindings = <&en_key SQT>, <&en_key LS(SQT)>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         mm_comma: mm_comma {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&en_key COMMA>, <&en_key_s COMMA>;
+            bindings = <&en_key COMMA>, <&en_key LS(COMMA)>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         mm_dot: mm_dot {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&en_key DOT>, <&en_key_s DOT>;
+            bindings = <&en_key DOT>, <&en_key LS(DOT)>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         mm_fslh: mm_fslh {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&en_key FSLH>, <&en_key_s FSLH>;
+            bindings = <&en_key FSLH>, <&en_key LS(FSLH)>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
