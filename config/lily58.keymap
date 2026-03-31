@@ -82,31 +82,12 @@
         // Shift + punctuation combos for RU layer.
         // Bypass mod-morph (which can't reliably detect Shift from hold-taps)
         // by firing en_key_s directly when both physical keys overlap.
+        // Only ' still needs en_key (not in ЙЦУКЕН).
+        // Other combos removed — mod-morphs use native keycodes now, no timing issues.
         combo_shift_sqt {
             timeout-ms = <80>;
             key-positions = <28 22>;
             bindings = <&en_key LS(SQT)>;
-            layers = <RU>;
-        };
-
-        combo_shift_comma {
-            timeout-ms = <80>;
-            key-positions = <28 46>;
-            bindings = <&en_key LS(COMMA)>;
-            layers = <RU>;
-        };
-
-        combo_shift_dot {
-            timeout-ms = <80>;
-            key-positions = <28 47>;
-            bindings = <&en_key LS(DOT)>;
-            layers = <RU>;
-        };
-
-        combo_shift_fslh {
-            timeout-ms = <80>;
-            key-positions = <28 48>;
-            bindings = <&en_key LS(FSLH)>;
             layers = <RU>;
         };
     };
@@ -172,12 +153,11 @@
             wait-ms = <10>;
             tap-ms = <30>;
             bindings =
-                <&macro_release>, <&kp LSHFT>, <&kp RSHFT>,
+                <&macro_wait_time 10>,
                 <&macro_tap>, <&lang_tog>,
-                <&macro_wait_time 50>,
+                <&macro_wait_time 10>,
                 <&macro_tap>,
                 <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
-                <&macro_release>, <&kp LSHFT>, <&kp RSHFT>,
                 <&macro_tap>, <&lang_tog>;
         };
 
@@ -346,33 +326,33 @@
             hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38 39 40 41 50 51 52 53 42 54 55>;
         };
 
-        // Mod-morphs for RU punctuation: unshifted = en_key, shifted = en_key_s
-        // Mod-morph masks shift before calling the binding, so en_key_s gets clean CapsLock toggle.
+        // Mod-morphs for RU punctuation using native ЙЦУКЕН keycodes.
+        // No CapsLock toggle needed — direct keycodes, zero latency.
         mm_sqt: mm_sqt {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&en_key SQT>, <&en_key LS(SQT)>;
+            bindings = <&en_key SQT>, <&kp LS(N2)>;       // ' (en_key) | " (Shift+2 in ЙЦУКЕН)
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         mm_comma: mm_comma {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&en_key COMMA>, <&en_key LS(COMMA)>;
+            bindings = <&kp LS(FSLH)>, <&kp LS(GRAVE)>;   // , (Shift+/ in ЙЦУКЕН) | Ё (Shift+` in ЙЦУКЕН)
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         mm_dot: mm_dot {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&en_key DOT>, <&en_key LS(DOT)>;
+            bindings = <&kp FSLH>, <&kp GRAVE>;            // . (/ in ЙЦУКЕН) | ё (` in ЙЦУКЕН)
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         mm_fslh: mm_fslh {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&en_key FSLH>, <&en_key LS(FSLH)>;
+            bindings = <&kp LS(BSLH)>, <&kp LS(N7)>;      // / (Shift+\ in ЙЦУКЕН) | ? (Shift+7 in ЙЦУКЕН)
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
