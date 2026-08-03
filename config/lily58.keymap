@@ -320,7 +320,9 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&en_key SQT>, <&kp LS(N2)>;
-       // ' (en_key) | " (Shift+2 in ЙЦУКЕН)
+
+            // ' (en_key) | " (Shift+2 in ЙЦУКЕН)
+
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
@@ -328,7 +330,9 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp LS(FSLH)>, <&kp LS(GRAVE)>;
-   // , (Shift+/ in ЙЦУКЕН) | Ё (Shift+` in ЙЦУКЕН)
+
+            // , (Shift+/ in ЙЦУКЕН) | Ё (Shift+` in ЙЦУКЕН)
+
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
@@ -336,7 +340,9 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp FSLH>, <&kp GRAVE>;
+
             // . (/ in ЙЦУКЕН) | ё (` in ЙЦУКЕН)
+
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
@@ -344,7 +350,9 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp LS(BSLH)>, <&kp LS(N7)>;
-      // / (Shift+\ in ЙЦУКЕН) | ? (Shift+7 in ЙЦУКЕН)
+
+            // / (Shift+\ in ЙЦУКЕН) | ? (Shift+7 in ЙЦУКЕН)
+
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
@@ -356,10 +364,10 @@
 
         base {
             bindings = <
-&trans        &trans             &trans             &trans                 &trans               &trans                             &trans           &trans               &trans                     &trans               &trans                    &trans
-&kp CAPSLOCK  &kp Q              &kp W              &kp E                  &kp R                &kp T                              &kp Y            &kp U                &kp I                      &kp O                &kp SQT                   &trans
-&trans        &hrml LEFT_GUI A   &hrml LEFT_ALT S   &hrml LEFT_CONTROL D   &hrml LEFT_SHIFT F   &kp G                              &kp H            &hrmr LEFT_SHIFT J   &hrmr LEFT_CONTROL K       &hrmr LEFT_ALT L     &hrmr LEFT_GUI SEMICOLON  &trans
-&trans        &brml RIGHT_GUI Z  &brml RIGHT_ALT X  &brml RIGHT_CONTROL C  &brml RIGHT_SHIFT V  &kp B        &trans       &trans   &kp N            &brmr RIGHT_SHIFT M  &brmr RIGHT_CONTROL COMMA  &brmr RIGHT_ALT DOT  &brmr RIGHT_GUI FSLH      &trans
+&trans        &trans             &trans             &trans                 &trans               &trans                             &trans           &trans               &trans                     &trans               &trans                &trans
+&kp CAPSLOCK  &kp Q              &kp W              &kp E                  &kp R                &kp T                              &kp Y            &kp U                &kp I                      &kp O                &kp SQT               &trans
+&trans        &hrml LEFT_GUI A   &hrml LEFT_ALT S   &hrml LEFT_CONTROL D   &hrml LEFT_SHIFT F   &kp G                              &kp H            &hrmr LEFT_SHIFT J   &hrmr LEFT_CONTROL K       &hrmr LEFT_ALT L     &hrmr LEFT_GUI P      &trans
+&trans        &brml RIGHT_GUI Z  &brml RIGHT_ALT X  &brml RIGHT_CONTROL C  &brml RIGHT_SHIFT V  &kp B        &trans       &trans   &kp N            &brmr RIGHT_SHIFT M  &brmr RIGHT_CONTROL COMMA  &brmr RIGHT_ALT DOT  &brmr RIGHT_GUI FSLH  &trans
                                                     &trans                 &kp ESCAPE           &lt 2 SPACE  &lt 3 TAB    &kp RET  &lt 1 BACKSPACE  &kp DELETE           &trans
             >;
 
